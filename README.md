@@ -14,7 +14,7 @@
  既然微信没有保存语音聊天的功能，自己加一个不就好了吗？！
 
  ~~本文结束！~~ 
- ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly90aW1nc2EuYmFpZHUuY29tL3RpbWc_aW1hZ2UmcXVhbGl0eT04MCZzaXplPWI5OTk5XzEwMDAwJnNlYz0xNTkwMTM3NTM2ODk3JmRpPTBjMjBhYjY5NjgyYTY4YTU0NmZhYTJkZTc0YmI0ZDk0JmltZ3R5cGU9MCZzcmM9aHR0cCUzQSUyRiUyRmItc3NsLmR1aXRhbmcuY29tJTJGdXBsb2FkcyUyRml0ZW0lMkYyMDE4MSUyRjIzJTJGMjAxODEyMzU1MDU2X3lWNVNILmpwZWcjcGljX2NlbnRlciA9MzAweDMwMA?x-oss-process=image/format,png#pic_center =300x300)
+ ![Alt]![在这里插入图片描述](https://img-blog.csdnimg.cn/20200522150808744.png)
 ## 功能实现
 
 1、 依赖Xposed框架（非root环境），给微信添加自定义的功能；
@@ -40,7 +40,7 @@
  2. 点击mp3文件点击可直接播放
  3. 可在右上角设置mp3输出文件路径
 
-![录音文件](https://img-blog.csdnimg.cn/20200522142110295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1pkZWx0YQ==,size_16,color_FFFFFF,t_70#pic_center =300x500)![播放语音](https://img-blog.csdnimg.cn/20200522142153334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1pkZWx0YQ==,size_16,color_FFFFFF,t_70#pic_center =300x400)
+![录音文件](https://img-blog.csdnimg.cn/20200522142110295.png)![播放语音](https://img-blog.csdnimg.cn/20200522142153334.png)
 
 
 ## 思路
