@@ -1,5 +1,8 @@
 package com.blanke.wechatRecordXposed.hook
 
+import android.util.Log
+import com.blanke.wechatRecordXposed.utils.JsonHelper
+import com.gh0u1l5.wechatmagician.spellbook.C
 import com.gh0u1l5.wechatmagician.spellbook.WechatGlobal
 import com.gh0u1l5.wechatmagician.spellbook.base.Hooker
 import com.gh0u1l5.wechatmagician.spellbook.base.HookerProvider
@@ -11,58 +14,25 @@ import de.robv.android.xposed.XposedHelpers.findAndHookMethod
 object SendMsgHooker : HookerProvider {
 
     override fun provideStaticHookers(): List<Hooker>? {
-        return listOf(methodStartRecordHook, methodStopRecordHook)//,methodHParamHook)
+        return listOf(methodAudioHook)
     }
 
-    private val methodStopRecordHook = Hooker {
-        val clz = XposedHelpers.findClass("com.tencent.mm.plugin.webview.ui.tools.jsapi.q", WechatGlobal.wxLoader)
-        XposedBridge.log("clzZ::::当前类"+clz.toString())
-        findAndHookMethod(clz, "aa",Classes.ClassQ,Classes.ClassS, object : XC_MethodHook() {
-            override fun beforeHookedMethod(param: MethodHookParam?) {
-                XposedBridge.log("hook=====A====== 构造方法")
-                if(param!=null){
-                    XposedBridge.log("hook 方法获取参数对象" + param.args.count())
-                    XposedBridge.log("第一个对象" + param.args[0].toString())
-                    Objects.StopParamQ= param.args[0]
-                    XposedBridge.log("第二个对象" + param.args[1].toString())
-                    Objects.StopParamS= param.args[1]
-                }else{
-                    XposedBridge.log("hook 方法空的对象" + param?.thisObject)
-                }
-            }
-        })
-    }
-
-    private val methodStartRecordHook = Hooker {
-        val clz = XposedHelpers.findClass("com.tencent.mm.plugin.webview.ui.tools.jsapi.q", WechatGlobal.wxLoader)
+    private val methodAudioHook = Hooker {
+        val clz = XposedHelpers.findClass("com.tencent.mm.audio.b.b", WechatGlobal.wxLoader)
         XposedBridge.log("clzA::::当前类"+clz.toString())
-        findAndHookMethod(clz, "Z",Classes.ClassQ,Classes.ClassS, object : XC_MethodHook() {
+        findAndHookMethod(clz, "setMaxDuration", C.Int, object : XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam?) {
-                XposedBridge.log("hook=====Z====== 构造方法")
+                XposedBridge.log("hook=====audio======方法")
                 if(param!=null){
-                    XposedBridge.log("hook 方法获取参数对象" + param.args.count())
-                    XposedBridge.log("第一个对象" + param.args[0].toString())
-                    Objects.StartParamQ= param.args[0]
-                    XposedBridge.log("第二个对象" + param.args[1].toString())
-                    Objects.StartParamS= param.args[1]
+                    val time=param.args[0] as Int
+                    if (time==70000){
+                        //param.args[0]= setting.minute.toInt() * 60 * 1000
+                        param.args[0] = 130000
+                        Log.i("Test", param.args[0].toString())
+                        XposedBridge.log("-------------------修改后的录音时长-------------------：" + param.args[0].toString())
+                    }
                 }else{
-                    XposedBridge.log("hook 方法空的对象" + param?.thisObject)
-                }
-            }
-        })
-    }
-    private val methodHParamHook = Hooker {
-        XposedBridge.hookAllConstructors(Classes.ClassInternal, object : XC_MethodHook() {
-            override fun beforeHookedMethod(param: MethodHookParam?) {
-                XposedBridge.log("hook=====参数类的====== 构造方法")
-                if(param!=null){
-                    XposedBridge.log("hook 方法获取参数对象" + param.args.count())
-                    XposedBridge.log("第一个对象" + param.args[0].toString())
-                    Objects.one= param.args[0]
-                    XposedBridge.log("第二个对象" + param.args[1].toString())
-                    Objects.two= param.args[1]
-                }else{
-                    XposedBridge.log("hook 方法空的对象" + param?.thisObject)
+                    XposedBridge.log("hook 方法空参数" + param?.thisObject)
                 }
             }
         })

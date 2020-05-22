@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Setting"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="输出路径(MP3):"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"></TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:minLines="2"
+                android:maxLines="3"
+                android:id="@+id/outputEdit"
+                android:layout_height="match_parent"></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="录音时长(分钟):"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"></TextView>
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:gravity="top"
+                android:id="@+id/timeEdit"
+                android:layout_height="match_parent"></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:text="确认"
+                android:layout_weight="1"
+                android:id="@+id/okButton"
+                android:layout_height="match_parent"></Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:text="重置"
+                android:layout_weight="1"
+                android:id="@+id/resetButton"
+                android:layout_height="match_parent"></Button>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,40 +1,41 @@
 package com.blanke.wechatRecordXposed.hook
 
-import android.app.Application
 import android.content.Context
+import android.os.Looper
 
 object Objects {
-//    val ChattingFooterEventImpl= Classes.ChattingFooterEventImpl.getDeclaredConstructors()[0].newInstance(1)
-
-    var StartParamQ: Any? =null
-    var StartParamS:Any?=null
-
-    var StopParamQ: Any? =null
-    var StopParamS:Any?=null
 
     var ActivityParam:Any?=null
-    var one:Any?=null
-    var two:Any?=null
-//    val ClassS= Classes.ClassS.getDeclaredConstructors()[0].newInstance()
+
+    var MP3DefaultOutputDir:String = "/storage/emulated/0/tencent/MicroMsg/convertToMP3"
+
+    var SettingFilePath:String = "/storage/emulated/0/WechatRecord/setting.json"
+
+    var DEFAULT_MINUTE:Int = 1
 
 }
-//
-//class SingletonDemo private constructor(){
-//    companion object{
-//        private var instance: Any? = null
-//            get(){
-//                if(field == null){
-//                    val cons=Classes.ClassQ.getDeclaredConstructors()[0]
-//                    cons.setAccessible(true)
-//                    field =cons .newInstance(0)
-//                }
-//                return field
-//            }
-//        @Synchronized
-//        fun get():Any{
-//            return instance!!
-//        }
-//    }
-//}
+
+class SingletonClassInternal private constructor(){
+    companion object{
+        private var instance: Any? = null
+            get(){
+                if(field == null){
+                    val outClassCon=Classes.ClassInternal.getDeclaredConstructors()[0]
+                    val mContext=Objects.ActivityParam as Context
+                    val mmContext=mContext.applicationContext
+                    if (Looper.myLooper() == null)
+                    {
+                        Looper.prepare()
+                    }
+                    field=outClassCon.newInstance(mmContext,false)
+                }
+                return field
+            }
+        @Synchronized
+        fun get():Any{
+            return instance!!
+        }
+    }
+}
 
 

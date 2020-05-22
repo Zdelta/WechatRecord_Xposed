@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <com.blanke.wechatRecordXposed.RefreshListView
+            android:layout_weight="1"
+            android:id="@+id/amrList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.blanke.wechatRecordXposed.RefreshListView>
+
+        <View
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="#000000"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <com.blanke.wechatRecordXposed.RefreshListView
+            android:layout_weight="1"
+            android:id="@+id/mp3List"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.blanke.wechatRecordXposed.RefreshListView>
+    </LinearLayout>
+</LinearLayout>
