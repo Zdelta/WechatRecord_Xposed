@@ -101,4 +101,6 @@ object LogHook:IXLogHook{
 google pix、安卓10  | 支持
 oppo、安卓10  | 不支持
 
-
+#### 参考/引用的项目
+[weixin_silk_2_mp3](https://github.com/zhangchenghai2015/weixin_silk_2_mp3)
+[WechatBotXposed](https://github.com/Blankeer/WechatBotXposed)
